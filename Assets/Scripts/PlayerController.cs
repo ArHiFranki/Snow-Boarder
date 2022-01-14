@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private new Rigidbody2D rigidbody2D;
     private SurfaceEffector2D surfaceEffector2D;
+    private bool canMove = true;
 
     private void Start()
     {
@@ -20,8 +21,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        RotatePlayer();
-        RespondToBoost();
+        if (canMove)
+        {
+            RotatePlayer();
+            RespondToBoost();
+        }
     }
 
     private void RotatePlayer()
@@ -46,5 +50,10 @@ public class PlayerController : MonoBehaviour
         {
             surfaceEffector2D.speed = baseSpeed;
         }
+    }
+
+    public void DisableControlls()
+    {
+        canMove = false;
     }
 }
