@@ -9,13 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float boostSpeed = 30f;
     [SerializeField] private float baseSpeed = 20f;
 
-    private new Rigidbody2D rigidbody2D;
+    private Rigidbody2D myRigidbody;
     private SurfaceEffector2D surfaceEffector2D;
     private bool canMove = true;
 
     private void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
         surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
     }
 
@@ -32,11 +32,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody2D.AddTorque(torqueAmount);
+            myRigidbody.AddTorque(torqueAmount);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            rigidbody2D.AddTorque(-torqueAmount);
+            myRigidbody.AddTorque(-torqueAmount);
         }
     }
 
